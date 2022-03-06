@@ -24,8 +24,6 @@
 package co.aikar.commands;
 
 import co.aikar.commands.apachecommonslang.ApacheCommonsExceptionUtil;
-import co.aikar.timings.lib.MCTiming;
-import co.aikar.timings.lib.TimingManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -78,7 +76,7 @@ public class BukkitCommandManager extends CommandManager<
     @SuppressWarnings("WeakerAccess")
     protected final Plugin plugin;
     private final CommandMap commandMap;
-    private final TimingManager timingManager;
+    //    private final TimingManager timingManager;
     private final BukkitTask localeTask;
     private final Logger logger;
     public final Integer mcMinorVersion;
@@ -87,7 +85,7 @@ public class BukkitCommandManager extends CommandManager<
     protected Map<String, BukkitRootCommand> registeredCommands = new HashMap<>();
     protected BukkitCommandContexts contexts;
     protected BukkitCommandCompletions completions;
-    MCTiming commandTiming;
+    //    MCTiming commandTiming;
     protected BukkitLocales locales;
     protected Map<UUID, String> issuersLocaleString = new ConcurrentHashMap<>();
     private boolean cantReadLocale = false;
@@ -97,8 +95,8 @@ public class BukkitCommandManager extends CommandManager<
         this.plugin = plugin;
         String prefix = this.plugin.getDescription().getPrefix();
         this.logger = Logger.getLogger(prefix != null ? prefix : this.plugin.getName());
-        this.timingManager = TimingManager.of(plugin);
-        this.commandTiming = this.timingManager.of("Commands");
+//        this.timingManager = TimingManager.of(plugin);
+//        this.commandTiming = this.timingManager.of("Commands");
         this.commandMap = hookCommandMap();
         this.formatters.put(MessageType.ERROR, defaultFormatter = new BukkitMessageFormatter(ChatColor.RED, ChatColor.YELLOW, ChatColor.RED));
         this.formatters.put(MessageType.SYNTAX, new BukkitMessageFormatter(ChatColor.YELLOW, ChatColor.GREEN, ChatColor.WHITE));
@@ -338,9 +336,9 @@ public class BukkitCommandManager extends CommandManager<
         }
     }
 
-    public TimingManager getTimings() {
-        return timingManager;
-    }
+//    public TimingManager getTimings() {
+//        return timingManager;
+//    }
 
     @Override
     public RootCommand createRootCommand(String cmd) {
